@@ -4,3 +4,7 @@ WebSockets/.vs/WebSockets/v15/Server/sqlite3/storage.ide
 WebSockets/.vs/WebSockets/v15/Server/sqlite3/storage.ide-shm
 WebSockets/.vs/WebSockets/v15/Server/sqlite3/storage.ide-wal
 .vs/nginx-https-wcf-websockets/v15/.suo
+*.lock
+*.ide
+*.ide-shm
+*.ide-wal
