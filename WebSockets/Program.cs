@@ -10,29 +10,34 @@ using System.Threading.Tasks;
 namespace Temp {
     class Program {
         static void Main(string[] args) {
-            var wsSocketServer = new WebSocketServer("ws://192.168.0.123:10011");
-            wsSocketServer.RestartAfterListenError = true;
-            wsSocketServer.Start(socket => {
-                socket.OnOpen = () => Console.WriteLine(socket.ConnectionInfo.Id + " - ws Open!");
-                socket.OnClose = () => Console.WriteLine(socket.ConnectionInfo.Id + " - ws Close!");
+            var ws = new WebSocketServer("ws://192.168.0.123:10011");
+            ws.RestartAfterListenError = true;
+            ws.Start(socket => {
+                socket.OnOpen =() => {
+                    Console.WriteLine(socket.ConnectionInfo.Id + " - ws OnOpen!");
+                };
+                socket.OnClose = () => {
+                    Console.WriteLine(socket.ConnectionInfo.Id + " - ws OnClose!");
+                };
                 socket.OnMessage = message => {
-                    Console.WriteLine(socket.ConnectionInfo.Id + " - " + message);
-                    socket.Send(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss fff"));
+                    Console.WriteLine(socket.ConnectionInfo.Id + " - OnMessage:" + message);
+
+                    socket.Send("Server response message:" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss fff"));
                 };
             });
+            Console.WriteLine("Listen on:" + ws.Location);
 
-            //var wssSocketServer = new WebSocketServer("wss://192.168.0.123:10043");
-            //wssSocketServer.Certificate = new X509Certificate2(@"C:\\test.pfx","cssd123");
-            //wssSocketServer.EnabledSslProtocols = SslProtocols.Tls12 | SslProtocols.Tls | SslProtocols.Tls11 | SslProtocols.Ssl2 | SslProtocols.Ssl3;
-            //wssSocketServer.Start(socket =>
-            //{
+
+            //var wss = new WebSocketServer("wss://192.168.0.123:10043");
+            //wss.Certificate = new X509Certificate2(@"C:\\test.pfx","cssd123");
+            //wss.EnabledSslProtocols = SslProtocols.Tls12 | SslProtocols.Tls | SslProtocols.Tls11 | SslProtocols.Ssl2 | SslProtocols.Ssl3;
+            //wss.Start(socket => {
             //    socket.OnOpen = () => Console.WriteLine("wss Open!");
             //    socket.OnClose = () => Console.WriteLine("wss Close!");
             //    socket.OnMessage = message => Console.WriteLine(message);
             //});
 
-            Console.WriteLine(wsSocketServer.Location);
-            //Console.WriteLine(wssSocketServer.Location);
+            //Console.WriteLine(wss.Location);
 
             Console.ReadLine();
         }
