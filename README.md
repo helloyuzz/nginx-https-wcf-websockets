@@ -8,8 +8,8 @@
 - [ ] 其它
 
 
-:point_right:[Emojo quick link](https://www.webfx.com/tools/emoji-cheat-sheet/)
-
+:point_right:[Emojo quick link](https://www.webfx.com/tools/emoji-cheat-sheet/)  
+:a:[read more](https://github.com/ikatyang/emoji-cheat-sheet/blob/master/README.md)
 
 
 **1.MakeCert自签名根证书**
