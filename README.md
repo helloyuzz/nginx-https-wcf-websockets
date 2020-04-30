@@ -28,3 +28,41 @@ makecert -n "CN=github.1tyu.cc" -pe -iv 1TYU_ROOT.pvk -ic 1TYU_ROOT.cer -sky exc
 openssl pkcs12 -in github.1tyu.cc.pfx -clcerts -nokeys -out github.1tyu.cc.crt - Export crt file
 openssl pkcs12 -in github.1tyu.cc.pfx -nodes -out github.1tyu.cc.key - Export key file
 ```
+
+**4.Nginx WSS Configration**
+```
+http{
+    map $http_upgrade $connection_upgrade {
+        default upgrade;
+        '' close;
+    }
+    
+    server {
+        listen       8083 ssl;
+        server_name  github.1tyu.cc;
+
+        # 证书配置
+        ssl_certificate      d:/github.1tyu.cc.crt;
+        ssl_certificate_key  d:/github.1tyu.cc.key;
+    
+        ssl_session_cache    shared:SSL:1m;
+        ssl_session_timeout  5m;
+    
+        ssl_ciphers  HIGH:!aNULL:!MD5;
+        ssl_prefer_server_ciphers  on;
+
+        #access_log  /var/log/nginx/websocket.access.log  main;
+
+        location /wss {
+            proxy_pass http://github.1tyu.cc:10011;            #指向wss服务器地址
+
+            proxy_http_version 1.1;
+            proxy_set_header Upgrade $http_upgrade;
+            proxy_set_header Connection "upgrade";
+
+            proxy_set_header X-Real-IP $remote_addr;            
+            proxy_set_header Host $host;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        }
+}
+```
