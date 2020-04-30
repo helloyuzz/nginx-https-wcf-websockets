@@ -21,7 +21,7 @@ makecert -r -pe -n "CN=1TYU Root Certificate" -sv 1TYU_ROOT.pvk 1TYU_ROOT.cer
 ```
 makecert -n "CN=github.1tyu.cc" -pe -iv 1TYU_ROOT.pvk -ic 1TYU_ROOT.cer -sky exchange -ss My
 ```
-然后从证书管理器中导出证书，文件名：github.1tyu.cc.pfx  
+ 然后从证书管理器中导出证书，pfx文件名：github.1tyu.cc.pfx  
 
 **3.OPENSSL 导出crt及key文件，用于Nginx https配置**
 ```OPENSSL
