@@ -9,5 +9,6 @@
     <Import_RootNamespace>MakeCert</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Content Include="$(MSBuildThisFileDirectory)MakeCert.txt" />
   </ItemGroup>
 </Project>
