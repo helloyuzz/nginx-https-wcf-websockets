@@ -11,6 +11,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WCF_HttpWinService", "WCF_H
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WCF_HttpClient", "WCF_HttpClient\WCF_HttpClient.csproj", "{90BBC1AB-76AD-440C-834E-A3B75A96F6A2}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "nginx.conf", "nginx.conf", "{0E468FCD-02FC-487A-B905-A33265A6E203}"
+	ProjectSection(SolutionItems) = preProject
+		nginx.conf\nginx.conf = nginx.conf\nginx.conf
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		MakeCert\MakeCert.projitems*{c68fefbf-4c72-4862-8815-9647f7e4c2c9}*SharedItemsImports = 13
