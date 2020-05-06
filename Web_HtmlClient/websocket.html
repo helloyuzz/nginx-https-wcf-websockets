@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>菜鸟教程(runoob.com)</title>
+
+    <script type="text/javascript">
+        var ws = new WebSocket("ws://wss.logichealth.com:10011");
+        if ("WebSocket" in window) {
+            ws.onopen = function () {
+                ws.send("发送数据发送数据aaaaaaaaaaaaaaaa");
+            };
+            ws.onmessage = function (evt) {
+                var received_msg = evt.data;
+                document.getElementById('aa').innerText = received_msg;
+            };
+            ws.onclose = function () {
+                alert("连接已关闭...");
+            };
+        }
+        else {
+            alert("您的浏览器不支持 WebSocket!");
+        }
+
+        function WebSocketTest() {
+        }
+        function send() {
+            ws.send("发送数据aaaaaaaaaaaaaaaa");
+        }
+        function send1() {
+            var wss = new WebSocket("wss://wss.logichealth.com:8083/wss");
+            wss.onopen = function () {
+                wss.send("发送数据aaaaaaaaaaaaaaaaaaaaaa--------------------------------------");
+            };
+            wss.onmessage = function (evt) {
+                var received_msg = evt.data;
+                document.getElementById('aa').innerHTML = received_msg;
+            };
+            wss.onclose = function () {                // 关闭 websocket
+                alert("连接已关闭...");
+            };
+        }
+    </script>
+
+</head>
+
+<body>
+
+    <div id="sse">
+        <a href="javascript:WebSocketTest()">运行 WebSocket</a>
+    </div><br>
+    <button onclick="send();">ws</button><br><br>
+    <button onclick="send1();">wss</button><br><br>
+    <div id="aa"></div>
+</body>
+
+</html>

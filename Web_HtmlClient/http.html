@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>菜鸟教程(runoob.com)</title>
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@8.5.0/dist/mermaid.min.js"/>
+    <!-- <script>
+        $(document).ready(function () {
+            $("p").click(function () {
+                $(this).hide();
+            });
+        });
+
+
+        var params = JSON.stringify(self.data);
+        params = "{\"Make\":\"\",\"Model\":\"\"}";
+        $.ajax({
+            type: "POST",
+            contentType: "text/plain",
+            datatype: "json", timeout: 1500,
+            url: 'http://localhost:6664/CarService.svc/api/GetCarsXdr', //self.uri+api,          
+            data: params,
+            beforeSend: function (xhr) { xhr.setRequestHeader("Accept", "application/json"); },
+            success: function (data, textStatus, xhr) {
+                //alert(data);
+                var items = data.Items;
+                $(items).each(function (id, item) {
+                    //    //var elm = '<li><h1>' +  + '</h1> ' +  + ' - ' + item.Trim + '</li>';
+                    alert(item.Make + "-" + item.Model);
+                });
+
+                //self.response(data);
+            },
+            error: function (xhr, textStatus, errorThrown) {
+                alert('Error: ' + errorThrown);
+            }
+        });
+    </script> -->
+    <script>
+        // var settings = {
+        //     "url": "http://192.168.0.123:10010/WCF_HttpsWinService/service1/",
+        //     "method": "POST",
+        //     "timeout": 0,
+        //     "headers": {
+        //         "Content-Type": "application/soap+xml;charset=utf-8"
+        //     },
+        //     "data": "<s:Envelope xmlns:a=\"http://www.w3.org/2005/08/addressing\" xmlns:s=\"http://www.w3.org/2003/05/soap-envelope\">\r\n  <s:Header>\r\n    <a:Action s:mustUnderstand=\"1\">http://tempuri.org/IService1/GetData</a:Action>\r\n    <a:MessageID>urn:uuid:7797d870-9bf6-4584-9820-25e8b235a5cb</a:MessageID>\r\n    <a:ReplyTo>\r\n      <a:Address>http://www.w3.org/2005/08/addressing/anonymous</a:Address>\r\n    </a:ReplyTo>\r\n    <a:To s:mustUnderstand=\"1\" xmlns:s=\"http://www.w3.org/2003/05/soap-envelope\" xmlns:a=\"http://www.w3.org/2005/08/addressing\">http://192.168.0.123:10010/WCF_HttpsWinService/service1/</a:To>\r\n  </s:Header>\r\n  <s:Body>\r\n    <GetData xmlns=\"http://tempuri.org/\">\r\n      <value>1</value>\r\n    </GetData>\r\n  </s:Body>\r\n</s:Envelope>",
+        // };
+
+        // $.ajax(settings).done(function (response) {
+        //     alert(response);
+        // });
+
+        // var settings = {
+        //     "url": "http://localhost:5638/sayhello",
+        //     "method": "GET",
+        //     "timeout": 0,
+        //     dataType: "json"
+        // };
+
+        // $.ajax(settings).done(function (response) {
+        //     alert(response);
+        // });
+        // $(function () {
+        //     $.ajax({
+        //         method: "Get",
+        //         url: "http://localhost:5638/sayhello",
+        //         dataType: "json",
+        //         success: function (data) {
+        //             alert(data);
+        //         }
+        //     })
+        // });
+
+        function GetData() {
+            $.ajax({
+                method: "Get",
+                url: "https://192.168.0.123:10012/WCF_HttpWinService/service1/GetData?value=1",
+                dataType: "json",
+                success: function (data) {
+                    alert(data);
+                }
+            });
+        }
+        function GetHttpData() {
+            $.ajax({
+                method: "Get",
+                url: "http://192.168.0.123:10010/WCF_HttpWinService/service1/GetData?value=1",
+                dataType: "json",
+                success: function (data) {
+                    alert(data);
+                }
+            });
+        }
+        function Ping() {
+            var settings = {
+                // "url": "http://localhost:40110/API/ping",
+                "url": "https://localhost:40113/API/ping",
+                "method": "GET",
+                "timeout": 0,
+            };
+
+            $.ajax(settings).done(function (response) {
+                alert(response);
+            });
+        }
+    </script>
+    <script>
+        $(document).ready(function () {
+            $("button").click(function () {
+                // alert("clicked");
+                // var data = $("#txt").val();
+                // var postdata = {};
+                // var data_obj = { "BoolValue": "true", "StringValue": data }
+                // postdata["value"] = data_obj;
+
+                // var url = "http://localhost:60429/service1.svc/TestMethod";
+                // $.ajax({
+                //     type: "POST",
+                //     url: url,
+                //     contentType: "application/json; charset=utf-8",
+                //     data: JSON.stringify(postdata),
+                //     dataType: "json",
+                //     success: function (data) { console.log(data); },
+                //     error: function (a, b, c) { console.log(a); }
+                // });
+
+                // var settings = {
+                //     "url": "https://localhost:10333/sayhello",
+                //     "method": "GET",
+                //     "timeout": 0,
+                //     "headers": {
+                //         "Content-Type": "application/soap+xml;charset=utf-8",
+                //         "Cookie": "ASP.NET_SessionId=sqzpsevuotlaxvvxc0t10idl"
+                //     },
+                //     "data": "<s:Envelope xmlns:a=\"http://www.w3.org/2005/08/addressing\" xmlns:s=\"http://www.w3.org/2003/05/soap-envelope\">  <s:Header>    <a:Action s:mustUnderstand=\"1\">mydomain/IService/SayHello</a:Action>    <a:MessageID>urn:uuid:322a08a0-4bed-4077-824e-fd964813aaa6</a:MessageID>    <a:ReplyTo>      <a:Address>http://www.w3.org/2005/08/addressing/anonymous</a:Address>    </a:ReplyTo>    <a:To s:mustUnderstand=\"1\" xmlns:s=\"http://www.w3.org/2003/05/soap-envelope\" xmlns:a=\"http://www.w3.org/2005/08/addressing\">https://localhost:10333/sayhello</a:To>  </s:Header>  <s:Body>    <SayHello xmlns=\"mydomain\" />  </s:Body></s:Envelope>"
+                // };
+
+                // $.ajax(settings).done(function (response) {
+                //     alert(response);
+                // });
+
+                // var settings = {
+                //     "url": "http://localhost:5638/sayhello",
+                //     "method": "GET",
+                //     "timeout": 0,
+                //     "headers": {
+                //         "Content-Type": "application/soap+xml;charset=utf-8"
+                //     },
+                // };
+
+                // $.ajax(settings).done(function (response) {
+                //     console.log(response);
+                // });
+
+                // $.ajax(settings).done(function (response) {
+                //     alert(response);
+                // });
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <p id="main"></p>
+    <button id="button">button</button>
+
+    <button onclick="GetHttpData();">GetHttpData</button>
+    <button onclick="GetData();">GetData</button>
+    <button onclick="Ping();">Ping</button>
+
+    <div class="mermaid">
+        graph LR;
+            A(用户端)-->|https|B(Nginx服务器);
+            B-->|http|C(Wcf服务器);
+            B-->|http|D(WebSocket服务器);
+            B-->|http|E(WebSocket服务器);
+            B-->|http|F(IIS服务器)
+        </div>
+</body>
+
+</html>

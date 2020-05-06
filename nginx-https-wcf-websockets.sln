@@ -16,6 +16,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "nginx.conf", "nginx.conf", 
 		nginx.conf\nginx.conf = nginx.conf\nginx.conf
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web_HtmlClient", "Web_HtmlClient", "{971D0BA6-E7C9-4688-B2E1-DD645143A24A}"
+	ProjectSection(SolutionItems) = preProject
+		Web_HtmlClient\http.html = Web_HtmlClient\http.html
+		Web_HtmlClient\ssl.html = Web_HtmlClient\ssl.html
+		Web_HtmlClient\web.config = Web_HtmlClient\web.config
+		Web_HtmlClient\websocket.html = Web_HtmlClient\websocket.html
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		MakeCert\MakeCert.projitems*{c68fefbf-4c72-4862-8815-9647f7e4c2c9}*SharedItemsImports = 13

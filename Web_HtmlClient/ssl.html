@@ -1,0 +1,41 @@
+<html>
+
+<head>
+  <meta http-equiv="Access-Control-Allow-Origin" content="*" />
+</head>
+
+<body>
+  <script>
+    var data = "<s:Envelope xmlns:a=\"http://www.w3.org/2005/08/addressing\" xmlns:s=\"http://www.w3.org/2003/05/soap-envelope\">";
+    data += "  <s:Header>";
+    data += "    <a:Action s:mustUnderstand=\"1\">http://tempuri.org/IService1/Ping</a:Action>";
+    data += "    <a:MessageID>urn:uuid:671b2501-d7cd-4cd4-b8ee-faffc7948253</a:MessageID>";
+    data += "    <a:ReplyTo>";
+    data += "      <a:Address>http://www.w3.org/2005/08/addressing/anonymous</a:Address>";
+    data += "    </a:ReplyTo>";
+    data += "    <a:To s:mustUnderstand=\"1\" xmlns:s=\"http://www.w3.org/2003/05/soap-envelope\" xmlns:a=\"http://www.w3.org/2005/08/addressing\">https://localhost:10443/WCF_HttpsWinService/service1</a:To>";
+    data += "  </s:Header>";
+    data += "  <s:Body>";
+    data += "    <Ping xmlns=\"http://tempuri.org/\">";
+    data += "      <clientValue>aa</clientValue>";
+    data += "    </Ping>";
+    data += "  </s:Body>";
+    data += "</s:Envelope>";
+
+    var xhr = new XMLHttpRequest();
+    xhr.withCredentials = true;
+
+    xhr.addEventListener("readystatechange", function () {
+      if (this.readyState === 4) {
+        alert(this.responseText);
+      }
+    });
+
+    xhr.open("POST", "https://192.168.0.123:10443/WCF_HttpsWinService/service1?singleWsdl");
+    xhr.setRequestHeader("Content-Type", "application/soap+xml;charset=utf-8");
+
+    xhr.send(data);
+  </script>
+</body>
+
+</html>
